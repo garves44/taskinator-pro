@@ -45,14 +45,15 @@ var saveTasks = function() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 };
 
-$(".list-group").on("click", "p", () => {
+
+$(".list-group").on("click", "p", function()  {
   var text = $(this).text().trim();
   var textInput = $("<textarea>").addClass("form-control").val(text);
   $(this).replaceWith(textInput);
   textInput.trigger("focus");
   console.log(text);
 });
-$(".list-group").on("blur", "textarea", () => {
+$(".list-group").on("blur", "textarea", function() {
   var text = $(this).val().trim();
   var status = $(this).closest(".list-group").attr("id").replace("list-", "");
   var index = $(this).closest(".list-group-item").index();
@@ -65,7 +66,7 @@ $(".list-group").on("blur", "textarea", () => {
 
   $(this).replaceWith(taskP);
 });
-$(".list-group").on("click", "span", () => {
+$(".list-group").on("click", "span", function() {
   var date = $(this).text().trim();
   var dateInput = $("<input>").attr("type", "text").addClass("form-control").val(date);
 
@@ -73,7 +74,7 @@ $(".list-group").on("click", "span", () => {
 
   dateInput.trigger("focus");
 });
-$(".list-group").on("blur", "input[type='text]", () => {
+$(".list-group").on("blur", "input[type='text]", function() {
   var date = $(this).val().trim();
   var status = $(this).closest(".list-group").attr("id").replace("list-", "");
   var index = $(this).closest(".list-group-item").index();
@@ -84,9 +85,6 @@ $(".list-group").on("blur", "input[type='text]", () => {
 
   $(this).replaceWith(taskSpan);
 });
-
-
-
 
 // modal was triggered
 $("#task-form-modal").on("show.bs.modal", function() {
